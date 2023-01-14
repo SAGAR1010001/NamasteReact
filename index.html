@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Namaste React</title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+     
+    <!-- <h1>Namaste Everyone!  </h1> 
+                    below we are getting same thing using JAVASCRIPT in <script> .....</script>
+                         Suppose this <h1>Namaste Everyone!  </h1>  is not defined  inside <body>.....</body> tag 
+                                   then with help of JS we can embed <h1>Namaste Everyone!  </h1>  inside body tag as can be seen inside script tag below -->
+    <script>
+
+    
+/*
+
+     we are creating element using JavaScript :
+             1. document is sub part of window's window browser web api : The Document interface represents any web page loaded in the browser 
+                                                                                      and 
+                                                                          serves as an entry point into the web page's content, which is the DOM tree.
+*/
+
+      //creating h1 tag using JS
+      const heading = document.createElement("h1");
+
+      //we are using varibale(very vaguely) innerHTML of heading(HTML element) and   providing content to it
+      heading.innerHTML = "Namaste Everyone from JavaScript";
+
+/*
+
+
+
+               *******       DOM   ********
+ 
+              ?how do i put above created h1 tag element/node inside root?
+                   1. pickup id="root" element by .getElementById("root") inside which we wil be adding h1 tag element 
+                       2. now use appendChild(heading) which  here it is "heading" element to be appended inside "root" element.
+                                        
+                    
+       * 
+       * 
+       *? How does browser run this code ?
+       *? How doew browser get to know what is document, createElement , innerHTML ?
+       
+       * ANS: Browser get to know through browser API
+                      as browser has a <JS engine> which gave all this functionality (window,document)
+                                         thats why browser knows what is window, document  and all its method etc.
+       
+       * 
+      
+
+       * ?what is cdn 
+       * 
+       * 
+*/
+           
+      const root = document.getElementById("root");
+
+      root.appendChild(heading);
+    </script>
+  </body>
+</html>
