@@ -20,6 +20,8 @@
     "react-dom": "^18.2.0"
   },
   "browserslist": [
-    "last 2 versions"
+    "last 2 versions",
+    "not dead",
+    " > 0.2%"
   ]
 }
