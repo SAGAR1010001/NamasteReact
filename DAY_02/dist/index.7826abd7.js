@@ -2959,7 +2959,7 @@ const heading = /*#__PURE__*/ (0, _reactDefault.default).createElement("h1", {
         color: "red"
     }
 }, "Namaste Everyone!");
-console.log(heading); //   React element is nothing but an OBJECT
+//   React element is nothing but an OBJECT
 const heading1 = /*#__PURE__*/ (0, _reactDefault.default).createElement("h1", {
     id: "heading",
     className: "mdk",

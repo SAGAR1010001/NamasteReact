@@ -24,4 +24,4 @@ yarn-error.log*
 
 
 .parcel-cache 
-dist
+dist/
