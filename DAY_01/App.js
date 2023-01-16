@@ -6,7 +6,7 @@
              *
              *
              * ! React give us this "createElement" API which creates the element in REACT.
-             * ! React.createElement(<tag>,{},<what u want to put inside the element>) ==> this will create h1 tag
+             * ! React.createElement(<tag>,{<props>},<what u want to put inside the element OR Child Component>) ==> this will create h1 tag
              *
              *
              *
@@ -22,6 +22,14 @@
              */
 
             //Got Heading
+
+
+            /**
+             *? <h1 id="heading" className="mdk" style="color:"red">Namaste Everyone!</h1>
+             * 
+             * below heading named const is same as above tag representation
+             * 
+             */
             const heading = React.createElement(
               "h1",
               {
