@@ -141,13 +141,11 @@ console.log(heading2);
 
 //OR
 
-
 const Title = () => (
   <h1 id="title" key="h2">
-    Namaste React fxn component
+    Food Villa
   </h1>
 );
-
 
 var xyz = 10;
 const HeaderComponent = () => (
@@ -156,7 +154,9 @@ const HeaderComponent = () => (
     {xyz}
     {console.log(xyz)}
     {/* <Title/>   this is known as Component composition  which is component inside a component*/}
-    <p><Title /></p>
+    <p>
+      <Title />
+    </p>
     <h5>{Title()}</h5>
     <h1>Namaste React Functional component</h1>
     <h2>This is a h2 tag </h2>
@@ -165,11 +165,8 @@ const HeaderComponent = () => (
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-
 //WHEN I HAVE TO RENDER MY REACT ELLEMENT
 // root.render(heading2);
 
-
-
 //WHEN I HAVE TO RENDER MY REACT COMPONENT
-root.render(<HeaderComponent/>)
+root.render(<HeaderComponent />);
