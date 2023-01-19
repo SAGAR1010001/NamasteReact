@@ -1,3 +1,9 @@
-// {
+{
 //   "plugins": [["transform-remove-console", { "exclude": ["error", "warn"] }]]
-// }
+}
+ 
+
+
+
+
+// https://www.npmjs.com/package/babel-plugin-transform-remove-console
