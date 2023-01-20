@@ -1,175 +1,1863 @@
 /**
- * 
- * 
- * parcel is a beast
- * 
- * 
- * 
- * 
- * 
- *? HMR : Hot Module Replacement
-
- *?  FILE WATCHER algorithm - C++
-
-
-*  BUNDLING
-*Created a Server
- * MINIFY
- * 
- * Cleaning our Code
- * 
- * 
- * Dev and Production Build
- * 
- * Super Fast build algorithm
- * 
- * 
- * Image Optimization
- * 
- * Caching while development
- * 
- * Compression
- * 
- * compatible with older version of browser i.e add polyfills to it
- * 
- * 
- * HTTPS on dev ====> npx parcel index.html --https
- * 
- * PORT NUMBER
- * 
- * 
- * 
- *Consistent Hashing algorithm to cache things up
- * 
- * 
- * 
- * Zero config bundler
- * 
- * 
+ * Header
+ *   -logo
+ *   -Nav Items(Right side)
+ *   -Cart
+ *
+ * Body
+ *   -search bar
+ *   -ReataurantList
+ *       -RestaurantCard (many cards)
+ *          -Image
+ *          -Name
+ *          -Rating
+ *          -Tags
+ *          -Cuisine
+ *
+ * Footer
+ *    -links
+ *    -copyrights
+ *
+ *
+ *
  */
 
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-// const heading = React.createElement(
-//   "h1",
-//   {
-//     id: "heading",
-//     className: "mdk",
-//     style: { color: "red" },
-//   },
-//   "Namaste Everyone!"
-// );
-// console.log(heading); //   React element is nothing but an OBJECT
-
-// console.log(heading);
-
-// const heading2 = React.createElement(
-//   "h2",
-//   {
-//     id: "heading2",
-//     className: "header2",
-//     key:"h2",
-//     style: { color: "red" },
-//   },
-//   "HEADING 2"
-// );
-
-// <div class="header">
-//   <h1>Namaste React</h1>
-//   <ul>
-//     <li>About us</li>
-//     <li>Support </li>
-//     <li>Home</li>
-//   </ul>
-// </div>
-
-const heading = React.createElement(
-  "h1",
-  {
-    id: "heading1",
-    className: "header1",
-    key: "h1",
-    style: { color: "red" },
-  },
-  "HEADING 1"
-);
-
-const ul = React.createElement("ul", {}, [
-  React.createElement("li", {}, "About Us"),
-  React.createElement("li", {}, "Support"),
-  React.createElement("li", {}, "Home"),
-]);
-
-const container = React.createElement(
-  "div",
-  {
-    className: "container",
-  },
-  [heading, ul]
-);
-
-console.log(container);
-
-/**
- *
- * JSX
- *
- *
- *
- */
-
-const heading2 = (
-  <h1 className="title" key="h2">
-    Namaste React
-  </h1>
-);
-console.log(heading2);
-
-/**
- * functional component
- */
-
-// const HeaderComponent = () => {
-//   return (
-//     <div>
-//       <h1>Namaste React Functional component</h1>
-//       <h2>This is a h2 tag </h2>
-//     </div>
-//   );
-// };
-
-//OR
-
-
 const Title = () => (
-  <h1 id="title" key="h2">
-    Namaste React fxn component
-  </h1>
+  <a href="/">
+    <img
+      className="logo"
+      src="data:image/jpeg;base64,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"
+      alt="logo"
+    />
+  </a>
 );
 
-
-var xyz = 10;
-const HeaderComponent = () => (
-  <div>
-    {heading}
-    {xyz}
-    {console.log(xyz)}
-    {/* <Title/>   this is known as Component composition  which is component inside a component*/}
-    <p><Title /></p>
-    <h5>{Title()}</h5>
-    <h1>Namaste React Functional component</h1>
-    <h2>This is a h2 tag </h2>
+const Header = () => (
+  <div className="header">
+    <Title />
+    <div className="nav-items">
+      <ul>
+        <li>Home</li>
+        <li>About</li>
+        <li>Contact</li>
+        <li>Cart</li>
+      </ul>
+    </div>
   </div>
 );
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+//config driven UI
 
+const config = [
+  //   type: "caraousel" is dynamic in nature .It vary from place to place. And this is done by the backend.
+
+  {
+    type: "carousel",
+    cards: [
+      {
+        offerName: "50% off",
+      },
+      {
+        offerName: "No Delivery Charge",
+      },
+    ],
+  },
+  // AFTER MY CARAOUSEL
+  {
+    type: "restaurant",
+    cards: [
+      {
+        name: "Burger King",
+        image:
+          "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/5f1c0c7b36787d89b63e9743838d4f5c",
+        cuisines: ["Burger", "American"],
+        rating: "4.2",
+      },
+      {
+        name: "KFC",
+        image:
+          "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/5f1c0c7b36787d89b63e9743838d4f5c",
+        cuisines: ["Burger", "American"],
+        rating: "4.1",
+      },
+    ],
+  },
+];
+
+
+const restaurantlist = [             
+              {
+                type: "restaurant",
+                data: {
+                  type: "F",
+                  id: "357256",
+                  name: "DELHI DARBAR FOOD POINT",
+                  uuid: "8276215d-a36e-4765-8ec7-930262d55484",
+                  city: "79",
+                  area: "Buddha Colony",
+                  totalRatingsString: "20+ ratings",
+                  cloudinaryImageId: "spi6yj9dgi2tsg6xyhys",
+                  cuisines: ["Chinese"],
+                  tags: [],
+                  costForTwo: 40000,
+                  costForTwoString: "₹400 FOR TWO",
+                  deliveryTime: 22,
+                  minDeliveryTime: 22,
+                  maxDeliveryTime: 22,
+                  slaString: "22 MINS",
+                  lastMileTravel: 0.4000000059604645,
+                  slugs: {
+                    restaurant:
+                      "delhi-darbar-food-point-srikrishnapuri-srikrishnapuri",
+                    city: "patna",
+                  },
+                  cityState: "79",
+                  address:
+                    "Dujra main Road Opp. Khaja Gali Patna -1,District - Patna,Bihar-800001",
+                  locality: "Srikrishnapuri",
+                  parentId: 69957,
+                  unserviceable: false,
+                  veg: false,
+                  select: false,
+                  favorite: false,
+                  tradeCampaignHeaders: [],
+                  aggregatedDiscountInfo: {
+                    header: "50% off",
+                    shortDescriptionList: [
+                      {
+                        meta: "50% off | Use WELCOME50",
+                        discountType: "Percentage",
+                        operationType: "RESTAURANT",
+                      },
+                    ],
+                    descriptionList: [
+                      {
+                        meta: "50% off up to ₹80 | Use code WELCOME50",
+                        discountType: "Percentage",
+                        operationType: "RESTAURANT",
+                      },
+                    ],
+                    subHeader: "",
+                    headerType: 0,
+                    superFreedel: "",
+                  },
+                  aggregatedDiscountInfoV2: {
+                    header: "50% OFF",
+                    shortDescriptionList: [
+                      {
+                        meta: "Use WELCOME50",
+                        discountType: "Percentage",
+                        operationType: "RESTAURANT",
+                      },
+                    ],
+                    descriptionList: [
+                      {
+                        meta: "50% off up to ₹80 | Use code WELCOME50",
+                        discountType: "Percentage",
+                        operationType: "RESTAURANT",
+                      },
+                    ],
+                    subHeader: "",
+                    headerType: 0,
+                    superFreedel: "",
+                  },
+                  chain: [],
+                  feeDetails: {
+                    fees: [],
+                    totalFees: 0,
+                    message: "",
+                    title: "",
+                    amount: "",
+                    icon: "",
+                  },
+                  availability: {
+                    opened: true,
+                    nextOpenMessage: "",
+                    nextCloseMessage: "",
+                  },
+                  longDistanceEnabled: 0,
+                  rainMode: "NONE",
+                  thirdPartyAddress: false,
+                  thirdPartyVendor: "",
+                  adTrackingID: "",
+                  badges: {
+                    imageBased: [],
+                    textBased: [],
+                    textExtendedBadges: [],
+                  },
+                  lastMileTravelString: "0.4 kms",
+                  hasSurge: false,
+                  sla: {
+                    restaurantId: "357256",
+                    deliveryTime: 22,
+                    minDeliveryTime: 22,
+                    maxDeliveryTime: 22,
+                    lastMileTravel: 0.4000000059604645,
+                    lastMileDistance: 0,
+                    serviceability: "SERVICEABLE",
+                    rainMode: "NONE",
+                    longDistance: "NOT_LONG_DISTANCE",
+                    preferentialService: false,
+                    iconType: "EMPTY",
+                  },
+                  promoted: false,
+                  avgRating: "3.1",
+                  totalRatings: 20,
+                  new: false,
+                },
+                subtype: "basic",
+              },
+              {
+                type: "restaurant",
+                data: {
+                  type: "F",
+                  id: "583128",
+                  name: "Chicago Pizza",
+                  uuid: "070abf08-2f1f-431e-8378-62f1b65b57c5",
+                  city: "79",
+                  area: "Fraser Road",
+                  totalRatingsString: "100+ ratings",
+                  cloudinaryImageId: "vuglxzksaeffwthyawch",
+                  cuisines: ["Pizzas", "Snacks"],
+                  tags: [],
+                  costForTwo: 20000,
+                  costForTwoString: "₹200 FOR TWO",
+                  deliveryTime: 23,
+                  minDeliveryTime: 23,
+                  maxDeliveryTime: 23,
+                  slaString: "23 MINS",
+                  lastMileTravel: 2.299999952316284,
+                  slugs: {
+                    restaurant: "chicago-pizza-fraser-road-fraser-road",
+                    city: "patna",
+                  },
+                  cityState: "79",
+                  address:
+                    "G8, Twin Tower, South Gandhi Maidan, Patna, Bihar-800001",
+                  locality: "Fraser Road",
+                  parentId: 60277,
+                  unserviceable: false,
+                  veg: false,
+                  select: false,
+                  favorite: false,
+                  tradeCampaignHeaders: [],
+                  aggregatedDiscountInfo: {
+                    header: "50% off",
+                    shortDescriptionList: [
+                      {
+                        meta: "50% off | Use WELCOME50",
+                        discountType: "Percentage",
+                        operationType: "RESTAURANT",
+                      },
+                    ],
+                    descriptionList: [
+                      {
+                        meta: "50% off up to ₹80 | Use code WELCOME50",
+                        discountType: "Percentage",
+                        operationType: "RESTAURANT",
+                      },
+                    ],
+                    subHeader: "",
+                    headerType: 0,
+                    superFreedel: "",
+                  },
+                  aggregatedDiscountInfoV2: {
+                    header: "50% OFF",
+                    shortDescriptionList: [
+                      {
+                        meta: "Use WELCOME50",
+                        discountType: "Percentage",
+                        operationType: "RESTAURANT",
+                      },
+                    ],
+                    descriptionList: [
+                      {
+                        meta: "50% off up to ₹80 | Use code WELCOME50",
+                        discountType: "Percentage",
+                        operationType: "RESTAURANT",
+                      },
+                    ],
+                    subHeader: "",
+                    headerType: 0,
+                    superFreedel: "",
+                  },
+                  chain: [],
+                  feeDetails: {
+                    fees: [],
+                    totalFees: 0,
+                    message: "",
+                    title: "",
+                    amount: "",
+                    icon: "",
+                  },
+                  availability: {
+                    opened: true,
+                    nextOpenMessage: "",
+                    nextCloseMessage: "",
+                  },
+                  longDistanceEnabled: 0,
+                  rainMode: "NONE",
+                  thirdPartyAddress: false,
+                  thirdPartyVendor: "",
+                  adTrackingID: "",
+                  badges: {
+                    imageBased: [],
+                    textBased: [],
+                    textExtendedBadges: [],
+                  },
+                  lastMileTravelString: "2.2 kms",
+                  hasSurge: false,
+                  sla: {
+                    restaurantId: "583128",
+                    deliveryTime: 23,
+                    minDeliveryTime: 23,
+                    maxDeliveryTime: 23,
+                    lastMileTravel: 2.299999952316284,
+                    lastMileDistance: 0,
+                    serviceability: "SERVICEABLE",
+                    rainMode: "NONE",
+                    longDistance: "NOT_LONG_DISTANCE",
+                    preferentialService: false,
+                    iconType: "EMPTY",
+                  },
+                  promoted: false,
+                  avgRating: "3.5",
+                  totalRatings: 100,
+                  new: false,
+                },
+                subtype: "basic",
+              },
+              {
+                type: "restaurant",
+                data: {
+                  type: "F",
+                  id: "626498",
+                  name: "Muskan Fast Food",
+                  uuid: "0f107169-37c9-4b0b-9cae-fb66d6c9f5b4",
+                  city: "79",
+                  area: "Fraser Road",
+                  totalRatingsString: "20+ ratings",
+                  cloudinaryImageId: "mtubiop0qkxwfjsuy2bi",
+                  cuisines: ["Indian", "South Indian", "Chinese", "Snacks"],
+                  tags: [],
+                  costForTwo: 20000,
+                  costForTwoString: "₹200 FOR TWO",
+                  deliveryTime: 19,
+                  minDeliveryTime: 19,
+                  maxDeliveryTime: 19,
+                  slaString: "19 MINS",
+                  lastMileTravel: 0.5,
+                  slugs: {
+                    restaurant: "muskan-fast-food-fraser-road-fraser-road",
+                    city: "patna",
+                  },
+                  cityState: "79",
+                  address:
+                    "PAPPIN GALI NEAR MASALA CHAKKI MANDIRI PATNA , Patna Sadar, Patna, Bihar, 800001",
+                  locality: "Pappin Gali",
+                  parentId: 142182,
+                  unserviceable: false,
+                  veg: false,
+                  select: false,
+                  favorite: false,
+                  tradeCampaignHeaders: [],
+                  aggregatedDiscountInfo: {
+                    header: "50% off",
+                    shortDescriptionList: [
+                      {
+                        meta: "50% off | Use WELCOME50",
+                        discountType: "Percentage",
+                        operationType: "RESTAURANT",
+                      },
+                    ],
+                    descriptionList: [
+                      {
+                        meta: "50% off up to ₹80 | Use code WELCOME50",
+                        discountType: "Percentage",
+                        operationType: "RESTAURANT",
+                      },
+                    ],
+                    subHeader: "",
+                    headerType: 0,
+                    superFreedel: "",
+                  },
+                  aggregatedDiscountInfoV2: {
+                    header: "50% OFF",
+                    shortDescriptionList: [
+                      {
+                        meta: "Use WELCOME50",
+                        discountType: "Percentage",
+                        operationType: "RESTAURANT",
+                      },
+                    ],
+                    descriptionList: [
+                      {
+                        meta: "50% off up to ₹80 | Use code WELCOME50",
+                        discountType: "Percentage",
+                        operationType: "RESTAURANT",
+                      },
+                    ],
+                    subHeader: "",
+                    headerType: 0,
+                    superFreedel: "",
+                  },
+                  chain: [],
+                  feeDetails: {
+                    fees: [],
+                    totalFees: 0,
+                    message: "",
+                    title: "",
+                    amount: "",
+                    icon: "",
+                  },
+                  availability: {
+                    opened: true,
+                    nextOpenMessage: "",
+                    nextCloseMessage: "",
+                  },
+                  longDistanceEnabled: 0,
+                  rainMode: "NONE",
+                  thirdPartyAddress: false,
+                  thirdPartyVendor: "",
+                  adTrackingID: "",
+                  badges: {
+                    imageBased: [],
+                    textBased: [],
+                    textExtendedBadges: [],
+                  },
+                  lastMileTravelString: "0.5 kms",
+                  hasSurge: false,
+                  sla: {
+                    restaurantId: "626498",
+                    deliveryTime: 19,
+                    minDeliveryTime: 19,
+                    maxDeliveryTime: 19,
+                    lastMileTravel: 0.5,
+                    lastMileDistance: 0,
+                    serviceability: "SERVICEABLE",
+                    rainMode: "NONE",
+                    longDistance: "NOT_LONG_DISTANCE",
+                    preferentialService: false,
+                    iconType: "EMPTY",
+                  },
+                  promoted: false,
+                  avgRating: "3.1",
+                  totalRatings: 20,
+                  new: false,
+                },
+                subtype: "basic",
+              },
+              {
+                type: "restaurant",
+                data: {
+                  type: "F",
+                  id: "150950",
+                  name: "New Pal Hotel",
+                  uuid: "2dd6afab-7342-423e-a6c5-1b62fb8793b1",
+                  city: "79",
+                  area: "Fraser Road Area",
+                  totalRatingsString: "5000+ ratings",
+                  cloudinaryImageId: "cadd4qgaodthe0ulvbgv",
+                  cuisines: ["Indian", "Chinese", "Tandoor"],
+                  tags: [],
+                  costForTwo: 20000,
+                  costForTwoString: "₹200 FOR TWO",
+                  deliveryTime: 28,
+                  minDeliveryTime: 28,
+                  maxDeliveryTime: 28,
+                  slaString: "28 MINS",
+                  lastMileTravel: 3.5999999046325684,
+                  slugs: {
+                    restaurant: "new-pal-hotel-station-road-fraser-road",
+                    city: "patna",
+                  },
+                  cityState: "79",
+                  address:
+                    "Near Hotel City Center, opposite Laxmi Hotel, Station Road , Patna",
+                  locality: "Station road",
+                  parentId: 147430,
+                  unserviceable: false,
+                  veg: false,
+                  select: false,
+                  favorite: false,
+                  tradeCampaignHeaders: [],
+                  aggregatedDiscountInfo: {
+                    header: "60% off",
+                    shortDescriptionList: [
+                      {
+                        meta: "60% off | Use TRYNEW",
+                        discountType: "Percentage",
+                        operationType: "RESTAURANT",
+                      },
+                    ],
+                    descriptionList: [
+                      {
+                        meta: "60% off up to ₹120 | Use code TRYNEW",
+                        discountType: "Percentage",
+                        operationType: "RESTAURANT",
+                      },
+                    ],
+                    subHeader: "",
+                    headerType: 0,
+                    superFreedel: "",
+                  },
+                  aggregatedDiscountInfoV2: {
+                    header: "60% OFF",
+                    shortDescriptionList: [
+                      {
+                        meta: "Use TRYNEW",
+                        discountType: "Percentage",
+                        operationType: "RESTAURANT",
+                      },
+                    ],
+                    descriptionList: [
+                      {
+                        meta: "60% off up to ₹120 | Use code TRYNEW",
+                        discountType: "Percentage",
+                        operationType: "RESTAURANT",
+                      },
+                    ],
+                    subHeader: "",
+                    headerType: 0,
+                    superFreedel: "",
+                  },
+                  chain: [],
+                  feeDetails: {
+                    fees: [],
+                    totalFees: 0,
+                    message: "",
+                    title: "",
+                    amount: "",
+                    icon: "",
+                  },
+                  availability: {
+                    opened: true,
+                    nextOpenMessage: "",
+                    nextCloseMessage: "",
+                  },
+                  longDistanceEnabled: 0,
+                  rainMode: "NONE",
+                  thirdPartyAddress: false,
+                  thirdPartyVendor: "",
+                  adTrackingID: "",
+                  badges: {
+                    imageBased: [],
+                    textBased: [],
+                    textExtendedBadges: [],
+                  },
+                  lastMileTravelString: "3.5 kms",
+                  hasSurge: false,
+                  sla: {
+                    restaurantId: "150950",
+                    deliveryTime: 28,
+                    minDeliveryTime: 28,
+                    maxDeliveryTime: 28,
+                    lastMileTravel: 3.5999999046325684,
+                    lastMileDistance: 0,
+                    serviceability: "SERVICEABLE",
+                    rainMode: "NONE",
+                    longDistance: "NOT_LONG_DISTANCE",
+                    preferentialService: false,
+                    iconType: "EMPTY",
+                  },
+                  promoted: false,
+                  avgRating: "3.3",
+                  totalRatings: 5000,
+                  new: false,
+                },
+                subtype: "basic",
+              },
+              {
+                type: "restaurant",
+                data: {
+                  type: "F",
+                  id: "220912",
+                  name: "Biryani Dry & Fry",
+                  uuid: "aeb43184-8991-4e99-bbc5-44ee3d194f38",
+                  city: "79",
+                  area: "Srikrishnapuri",
+                  totalRatingsString: "100+ ratings",
+                  cloudinaryImageId: "taexcidigcuebfbnucv0",
+                  cuisines: ["Biryani", "Tandoor"],
+                  tags: [],
+                  costForTwo: 25000,
+                  costForTwoString: "₹250 FOR TWO",
+                  deliveryTime: 25,
+                  minDeliveryTime: 25,
+                  maxDeliveryTime: 25,
+                  slaString: "25 MINS",
+                  lastMileTravel: 1.899999976158142,
+                  slugs: {
+                    restaurant:
+                      "biryani-dry-&-fry-srikrishnapuri-srikrishnapuri",
+                    city: "patna",
+                  },
+                  cityState: "79",
+                  address:
+                    "Sesodiya Place, East Boring Road, Sri Krishnapuri, Patna",
+                  locality: "Srikrishnapuri",
+                  parentId: 46678,
+                  unserviceable: false,
+                  veg: false,
+                  select: false,
+                  favorite: false,
+                  tradeCampaignHeaders: [],
+                  aggregatedDiscountInfo: {
+                    header: "50% off",
+                    shortDescriptionList: [
+                      {
+                        meta: "50% off | Use WELCOME50",
+                        discountType: "Percentage",
+                        operationType: "RESTAURANT",
+                      },
+                    ],
+                    descriptionList: [
+                      {
+                        meta: "50% off up to ₹80 | Use code WELCOME50",
+                        discountType: "Percentage",
+                        operationType: "RESTAURANT",
+                      },
+                    ],
+                    subHeader: "",
+                    headerType: 0,
+                    superFreedel: "",
+                  },
+                  aggregatedDiscountInfoV2: {
+                    header: "50% OFF",
+                    shortDescriptionList: [
+                      {
+                        meta: "Use WELCOME50",
+                        discountType: "Percentage",
+                        operationType: "RESTAURANT",
+                      },
+                    ],
+                    descriptionList: [
+                      {
+                        meta: "50% off up to ₹80 | Use code WELCOME50",
+                        discountType: "Percentage",
+                        operationType: "RESTAURANT",
+                      },
+                    ],
+                    subHeader: "",
+                    headerType: 0,
+                    superFreedel: "",
+                  },
+                  chain: [],
+                  feeDetails: {
+                    fees: [],
+                    totalFees: 0,
+                    message: "",
+                    title: "",
+                    amount: "",
+                    icon: "",
+                  },
+                  availability: {
+                    opened: true,
+                    nextOpenMessage: "",
+                    nextCloseMessage: "",
+                  },
+                  longDistanceEnabled: 0,
+                  rainMode: "NONE",
+                  thirdPartyAddress: false,
+                  thirdPartyVendor: "",
+                  adTrackingID: "",
+                  badges: {
+                    imageBased: [],
+                    textBased: [],
+                    textExtendedBadges: [],
+                  },
+                  lastMileTravelString: "1.8 kms",
+                  hasSurge: false,
+                  sla: {
+                    restaurantId: "220912",
+                    deliveryTime: 25,
+                    minDeliveryTime: 25,
+                    maxDeliveryTime: 25,
+                    lastMileTravel: 1.899999976158142,
+                    lastMileDistance: 0,
+                    serviceability: "SERVICEABLE",
+                    rainMode: "NONE",
+                    longDistance: "NOT_LONG_DISTANCE",
+                    preferentialService: false,
+                    iconType: "EMPTY",
+                  },
+                  promoted: false,
+                  avgRating: "2.6",
+                  totalRatings: 100,
+                  new: false,
+                },
+                subtype: "basic",
+              },
+              {
+                type: "restaurant",
+                data: {
+                  type: "F",
+                  id: "647825",
+                  name: "Shop Keeper",
+                  uuid: "c2f85282-f8db-4f4b-a92c-98851bca93b0",
+                  city: "79",
+                  area: "Fraser Road",
+                  totalRatingsString: "Too Few Ratings",
+                  cloudinaryImageId: "33b05f9b13c4e300ad58263f7ab626ba",
+                  cuisines: ["Chinese", "Snacks"],
+                  tags: [],
+                  costForTwo: 20000,
+                  costForTwoString: "₹200 FOR TWO",
+                  deliveryTime: 21,
+                  minDeliveryTime: 21,
+                  maxDeliveryTime: 21,
+                  slaString: "21 MINS",
+                  lastMileTravel: 0.5,
+                  slugs: {
+                    restaurant: "shop-keeper-fraser-road-fraser-road",
+                    city: "patna",
+                  },
+                  cityState: "79",
+                  address:
+                    "PAPPIN GALI NEAR MASALA CHAKKI  MANDIRI PATNA , Patna Sadar,  Patna, Bihar-800001, Patna Sadar,  Patna, , Bihar, 800001",
+                  locality: "Patna Sadar",
+                  parentId: 390450,
+                  unserviceable: false,
+                  veg: false,
+                  select: false,
+                  favorite: false,
+                  tradeCampaignHeaders: [],
+                  aggregatedDiscountInfo: {
+                    header: "50% off",
+                    shortDescriptionList: [
+                      {
+                        meta: "50% off | Use WELCOME50",
+                        discountType: "Percentage",
+                        operationType: "RESTAURANT",
+                      },
+                    ],
+                    descriptionList: [
+                      {
+                        meta: "50% off up to ₹80 | Use code WELCOME50",
+                        discountType: "Percentage",
+                        operationType: "RESTAURANT",
+                      },
+                    ],
+                    subHeader: "",
+                    headerType: 0,
+                    superFreedel: "",
+                  },
+                  aggregatedDiscountInfoV2: {
+                    header: "50% OFF",
+                    shortDescriptionList: [
+                      {
+                        meta: "Use WELCOME50",
+                        discountType: "Percentage",
+                        operationType: "RESTAURANT",
+                      },
+                    ],
+                    descriptionList: [
+                      {
+                        meta: "50% off up to ₹80 | Use code WELCOME50",
+                        discountType: "Percentage",
+                        operationType: "RESTAURANT",
+                      },
+                    ],
+                    subHeader: "",
+                    headerType: 0,
+                    superFreedel: "",
+                  },
+                  ribbon: [
+                    {
+                      type: "NEW",
+                    },
+                  ],
+                  chain: [],
+                  feeDetails: {
+                    fees: [],
+                    totalFees: 0,
+                    message: "",
+                    title: "",
+                    amount: "",
+                    icon: "",
+                  },
+                  availability: {
+                    opened: true,
+                    nextOpenMessage: "",
+                    nextCloseMessage: "",
+                  },
+                  longDistanceEnabled: 0,
+                  rainMode: "NONE",
+                  thirdPartyAddress: false,
+                  thirdPartyVendor: "",
+                  adTrackingID: "",
+                  badges: {
+                    imageBased: [],
+                    textBased: [],
+                    textExtendedBadges: [],
+                  },
+                  lastMileTravelString: "0.5 kms",
+                  hasSurge: false,
+                  sla: {
+                    restaurantId: "647825",
+                    deliveryTime: 21,
+                    minDeliveryTime: 21,
+                    maxDeliveryTime: 21,
+                    lastMileTravel: 0.5,
+                    lastMileDistance: 0,
+                    serviceability: "SERVICEABLE",
+                    rainMode: "NONE",
+                    longDistance: "NOT_LONG_DISTANCE",
+                    preferentialService: false,
+                    iconType: "EMPTY",
+                  },
+                  promoted: false,
+                  avgRating: "--",
+                  totalRatings: 0,
+                  new: true,
+                },
+                subtype: "basic",
+              },
+              {
+                type: "restaurant",
+                data: {
+                  type: "F",
+                  id: "381297",
+                  name: "MY BAKERY WORLD",
+                  uuid: "798c9f33-176a-42f6-9173-83e880ceb8e7",
+                  city: "79",
+                  area: "Srikrishnapuri",
+                  totalRatingsString: "500+ ratings",
+                  cloudinaryImageId: "g4rf2hu8zhacjj6cvtcr",
+                  cuisines: ["Desserts"],
+                  tags: [],
+                  costForTwo: 20000,
+                  costForTwoString: "₹200 FOR TWO",
+                  deliveryTime: 24,
+                  minDeliveryTime: 24,
+                  maxDeliveryTime: 24,
+                  slaString: "24 MINS",
+                  lastMileTravel: 0.699999988079071,
+                  slugs: {
+                    restaurant: "my-bakery-world-srikrishnapuri-srikrishnapuri",
+                    city: "patna",
+                  },
+                  cityState: "79",
+                  address:
+                    "Aashish Anand Appartment, Opp. of Mahant Hanuman Sharan High School, L.C.T Ghat, Mainpura, Patna Sadar, Patna, Bihar- 800001",
+                  locality: "Srikrishnapuri",
+                  parentId: 251260,
+                  unserviceable: false,
+                  veg: false,
+                  select: false,
+                  favorite: false,
+                  tradeCampaignHeaders: [],
+                  aggregatedDiscountInfo: {
+                    header: "60% off",
+                    shortDescriptionList: [
+                      {
+                        meta: "60% off | Use TRYNEW",
+                        discountType: "Percentage",
+                        operationType: "RESTAURANT",
+                      },
+                    ],
+                    descriptionList: [
+                      {
+                        meta: "60% off up to ₹120 | Use code TRYNEW",
+                        discountType: "Percentage",
+                        operationType: "RESTAURANT",
+                      },
+                    ],
+                    subHeader: "",
+                    headerType: 0,
+                    superFreedel: "",
+                  },
+                  aggregatedDiscountInfoV2: {
+                    header: "60% OFF",
+                    shortDescriptionList: [
+                      {
+                        meta: "Use TRYNEW",
+                        discountType: "Percentage",
+                        operationType: "RESTAURANT",
+                      },
+                    ],
+                    descriptionList: [
+                      {
+                        meta: "60% off up to ₹120 | Use code TRYNEW",
+                        discountType: "Percentage",
+                        operationType: "RESTAURANT",
+                      },
+                    ],
+                    subHeader: "",
+                    headerType: 0,
+                    superFreedel: "",
+                  },
+                  chain: [],
+                  feeDetails: {
+                    fees: [],
+                    totalFees: 0,
+                    message: "",
+                    title: "",
+                    amount: "",
+                    icon: "",
+                  },
+                  availability: {
+                    opened: true,
+                    nextOpenMessage: "",
+                    nextCloseMessage: "",
+                  },
+                  longDistanceEnabled: 0,
+                  rainMode: "NONE",
+                  thirdPartyAddress: false,
+                  thirdPartyVendor: "",
+                  adTrackingID: "",
+                  badges: {
+                    imageBased: [],
+                    textBased: [],
+                    textExtendedBadges: [],
+                  },
+                  lastMileTravelString: "0.6 kms",
+                  hasSurge: false,
+                  sla: {
+                    restaurantId: "381297",
+                    deliveryTime: 24,
+                    minDeliveryTime: 24,
+                    maxDeliveryTime: 24,
+                    lastMileTravel: 0.699999988079071,
+                    lastMileDistance: 0,
+                    serviceability: "SERVICEABLE",
+                    rainMode: "NONE",
+                    longDistance: "NOT_LONG_DISTANCE",
+                    preferentialService: false,
+                    iconType: "EMPTY",
+                  },
+                  promoted: false,
+                  avgRating: "3.6",
+                  totalRatings: 500,
+                  new: false,
+                },
+                subtype: "basic",
+              },
+              {
+                type: "restaurant",
+                data: {
+                  type: "F",
+                  id: "628563",
+                  name: "Royals Bakery",
+                  uuid: "6c1ea0ff-8e5d-4da7-9a50-6c04d950eeec",
+                  city: "79",
+                  area: "Fraser Road",
+                  totalRatingsString: "Too Few Ratings",
+                  cloudinaryImageId: "pw623pti5w1sb9rkvjxn",
+                  cuisines: ["Bakery"],
+                  tags: [],
+                  costForTwo: 30000,
+                  costForTwoString: "₹300 FOR TWO",
+                  deliveryTime: 23,
+                  minDeliveryTime: 23,
+                  maxDeliveryTime: 23,
+                  slaString: "23 MINS",
+                  lastMileTravel: 0.699999988079071,
+                  slugs: {
+                    restaurant: "royals-bakery-fraser-road-fraser-road",
+                    city: "patna",
+                  },
+                  cityState: "79",
+                  address:
+                    "Lodipur police line Nala per mandiri near shiv mandir road number 10 patna",
+                  locality: "Shiv mandir road",
+                  parentId: 172620,
+                  unserviceable: false,
+                  veg: false,
+                  select: false,
+                  favorite: false,
+                  tradeCampaignHeaders: [],
+                  aggregatedDiscountInfo: {
+                    header: "50% off",
+                    shortDescriptionList: [
+                      {
+                        meta: "50% off | Use WELCOME50",
+                        discountType: "Percentage",
+                        operationType: "RESTAURANT",
+                      },
+                    ],
+                    descriptionList: [
+                      {
+                        meta: "50% off up to ₹80 | Use code WELCOME50",
+                        discountType: "Percentage",
+                        operationType: "RESTAURANT",
+                      },
+                    ],
+                    subHeader: "",
+                    headerType: 0,
+                    superFreedel: "",
+                  },
+                  aggregatedDiscountInfoV2: {
+                    header: "50% OFF",
+                    shortDescriptionList: [
+                      {
+                        meta: "Use WELCOME50",
+                        discountType: "Percentage",
+                        operationType: "RESTAURANT",
+                      },
+                    ],
+                    descriptionList: [
+                      {
+                        meta: "50% off up to ₹80 | Use code WELCOME50",
+                        discountType: "Percentage",
+                        operationType: "RESTAURANT",
+                      },
+                    ],
+                    subHeader: "",
+                    headerType: 0,
+                    superFreedel: "",
+                  },
+                  chain: [],
+                  feeDetails: {
+                    fees: [],
+                    totalFees: 0,
+                    message: "",
+                    title: "",
+                    amount: "",
+                    icon: "",
+                  },
+                  availability: {
+                    opened: true,
+                    nextOpenMessage: "",
+                    nextCloseMessage: "",
+                  },
+                  longDistanceEnabled: 0,
+                  rainMode: "NONE",
+                  thirdPartyAddress: false,
+                  thirdPartyVendor: "",
+                  adTrackingID: "",
+                  badges: {
+                    imageBased: [],
+                    textBased: [],
+                    textExtendedBadges: [],
+                  },
+                  lastMileTravelString: "0.6 kms",
+                  hasSurge: false,
+                  sla: {
+                    restaurantId: "628563",
+                    deliveryTime: 23,
+                    minDeliveryTime: 23,
+                    maxDeliveryTime: 23,
+                    lastMileTravel: 0.699999988079071,
+                    lastMileDistance: 0,
+                    serviceability: "SERVICEABLE",
+                    rainMode: "NONE",
+                    longDistance: "NOT_LONG_DISTANCE",
+                    preferentialService: false,
+                    iconType: "EMPTY",
+                  },
+                  promoted: false,
+                  avgRating: "--",
+                  totalRatings: 0,
+                  new: false,
+                },
+                subtype: "basic",
+              },
+              {
+                type: "restaurant",
+                data: {
+                  type: "F",
+                  id: "665472",
+                  name: "Mamta Food Point",
+                  uuid: "3cf90b08-de36-4f7a-9234-8a0e94d5b77d",
+                  city: "79",
+                  area: "Srikrishnapuri",
+                  totalRatingsString: "Too Few Ratings",
+                  cloudinaryImageId: "20f037ceb5a56c99010e8790d33b966a",
+                  cuisines: ["Snacks", "Chinese"],
+                  tags: [],
+                  costForTwo: 15000,
+                  costForTwoString: "₹150 FOR TWO",
+                  deliveryTime: 27,
+                  minDeliveryTime: 27,
+                  maxDeliveryTime: 27,
+                  slaString: "27 MINS",
+                  lastMileTravel: 0.4000000059604645,
+                  slugs: {
+                    restaurant:
+                      "mamta-food-point-srikrishnapuri-srikrishnapuri",
+                    city: "patna",
+                  },
+                  cityState: "79",
+                  address:
+                    "J4FJ+F64, Pahalwanghat, Buddha Colony, Patna, Bihar 800001, India",
+                  locality: "Buddha Colony",
+                  parentId: 398956,
+                  unserviceable: false,
+                  veg: false,
+                  select: false,
+                  favorite: false,
+                  tradeCampaignHeaders: [],
+                  aggregatedDiscountInfo: {
+                    header: "50% off",
+                    shortDescriptionList: [
+                      {
+                        meta: "50% off | Use WELCOME50",
+                        discountType: "Percentage",
+                        operationType: "RESTAURANT",
+                      },
+                    ],
+                    descriptionList: [
+                      {
+                        meta: "50% off up to ₹80 | Use code WELCOME50",
+                        discountType: "Percentage",
+                        operationType: "RESTAURANT",
+                      },
+                    ],
+                    subHeader: "",
+                    headerType: 0,
+                    superFreedel: "",
+                  },
+                  aggregatedDiscountInfoV2: {
+                    header: "50% OFF",
+                    shortDescriptionList: [
+                      {
+                        meta: "Use WELCOME50",
+                        discountType: "Percentage",
+                        operationType: "RESTAURANT",
+                      },
+                    ],
+                    descriptionList: [
+                      {
+                        meta: "50% off up to ₹80 | Use code WELCOME50",
+                        discountType: "Percentage",
+                        operationType: "RESTAURANT",
+                      },
+                    ],
+                    subHeader: "",
+                    headerType: 0,
+                    superFreedel: "",
+                  },
+                  ribbon: [
+                    {
+                      type: "NEW",
+                    },
+                  ],
+                  chain: [],
+                  feeDetails: {
+                    fees: [],
+                    totalFees: 0,
+                    message: "",
+                    title: "",
+                    amount: "",
+                    icon: "",
+                  },
+                  availability: {
+                    opened: true,
+                    nextOpenMessage: "",
+                    nextCloseMessage: "",
+                  },
+                  longDistanceEnabled: 0,
+                  rainMode: "NONE",
+                  thirdPartyAddress: false,
+                  thirdPartyVendor: "",
+                  adTrackingID: "",
+                  badges: {
+                    imageBased: [],
+                    textBased: [],
+                    textExtendedBadges: [],
+                  },
+                  lastMileTravelString: "0.4 kms",
+                  hasSurge: false,
+                  sla: {
+                    restaurantId: "665472",
+                    deliveryTime: 27,
+                    minDeliveryTime: 27,
+                    maxDeliveryTime: 27,
+                    lastMileTravel: 0.4000000059604645,
+                    lastMileDistance: 0,
+                    serviceability: "SERVICEABLE",
+                    rainMode: "NONE",
+                    longDistance: "NOT_LONG_DISTANCE",
+                    preferentialService: false,
+                    iconType: "EMPTY",
+                  },
+                  promoted: false,
+                  avgRating: "--",
+                  totalRatings: 0,
+                  new: true,
+                },
+                subtype: "basic",
+              },
+              {
+                type: "restaurant",
+                data: {
+                  type: "F",
+                  id: "145776",
+                  name: "Biryani Lazeez",
+                  uuid: "ab8c0031-bc29-4fa7-968a-6c36861ec1ea",
+                  city: "79",
+                  area: "Srikrishnapuri",
+                  totalRatingsString: "5000+ ratings",
+                  cloudinaryImageId: "lmavrfpszaqctywkknyk",
+                  cuisines: ["Chinese", "Indian"],
+                  tags: [],
+                  costForTwo: 20000,
+                  costForTwoString: "₹200 FOR TWO",
+                  deliveryTime: 16,
+                  minDeliveryTime: 16,
+                  maxDeliveryTime: 16,
+                  slaString: "16 MINS",
+                  lastMileTravel: 1.7000000476837158,
+                  slugs: {
+                    restaurant: "biryani-lazeez-kidwaipuri-srikrishnapuri",
+                    city: "patna",
+                  },
+                  cityState: "79",
+                  address:
+                    "East boring canal road, Near Patna tent, Sri Krishnapuri, Patna",
+                  locality: "Srikrishnapuri",
+                  parentId: 46830,
+                  unserviceable: false,
+                  veg: false,
+                  select: false,
+                  favorite: false,
+                  tradeCampaignHeaders: [],
+                  aggregatedDiscountInfo: {
+                    header: "60% off",
+                    shortDescriptionList: [
+                      {
+                        meta: "60% off | Use TRYNEW",
+                        discountType: "Percentage",
+                        operationType: "RESTAURANT",
+                      },
+                    ],
+                    descriptionList: [
+                      {
+                        meta: "60% off up to ₹120 | Use code TRYNEW",
+                        discountType: "Percentage",
+                        operationType: "RESTAURANT",
+                      },
+                    ],
+                    subHeader: "",
+                    headerType: 0,
+                    superFreedel: "",
+                  },
+                  aggregatedDiscountInfoV2: {
+                    header: "60% OFF",
+                    shortDescriptionList: [
+                      {
+                        meta: "Use TRYNEW",
+                        discountType: "Percentage",
+                        operationType: "RESTAURANT",
+                      },
+                    ],
+                    descriptionList: [
+                      {
+                        meta: "60% off up to ₹120 | Use code TRYNEW",
+                        discountType: "Percentage",
+                        operationType: "RESTAURANT",
+                      },
+                    ],
+                    subHeader: "",
+                    headerType: 0,
+                    superFreedel: "",
+                  },
+                  chain: [],
+                  feeDetails: {
+                    fees: [],
+                    totalFees: 0,
+                    message: "",
+                    title: "",
+                    amount: "",
+                    icon: "",
+                  },
+                  availability: {
+                    opened: true,
+                    nextOpenMessage: "",
+                    nextCloseMessage: "",
+                  },
+                  longDistanceEnabled: 0,
+                  rainMode: "NONE",
+                  thirdPartyAddress: false,
+                  thirdPartyVendor: "",
+                  adTrackingID: "",
+                  badges: {
+                    imageBased: [],
+                    textBased: [],
+                    textExtendedBadges: [],
+                  },
+                  lastMileTravelString: "1.7 kms",
+                  hasSurge: false,
+                  sla: {
+                    restaurantId: "145776",
+                    deliveryTime: 16,
+                    minDeliveryTime: 16,
+                    maxDeliveryTime: 16,
+                    lastMileTravel: 1.7000000476837158,
+                    lastMileDistance: 0,
+                    serviceability: "SERVICEABLE",
+                    rainMode: "NONE",
+                    longDistance: "NOT_LONG_DISTANCE",
+                    preferentialService: false,
+                    iconType: "EMPTY",
+                  },
+                  promoted: false,
+                  avgRating: "2.6",
+                  totalRatings: 5000,
+                  new: false,
+                },
+                subtype: "basic",
+              },
+              {
+                type: "restaurant",
+                data: {
+                  type: "F",
+                  id: "180592",
+                  name: "Biryani handi ghar",
+                  uuid: "f5166317-9f51-4d9e-b99c-053dfb45726b",
+                  city: "79",
+                  area: "Pandooi Kothi",
+                  totalRatingsString: "1000+ ratings",
+                  cloudinaryImageId: "wiswunoiympfmdis7m1t",
+                  cuisines: ["Biryani"],
+                  tags: [],
+                  costForTwo: 20000,
+                  costForTwoString: "₹200 FOR TWO",
+                  deliveryTime: 26,
+                  minDeliveryTime: 26,
+                  maxDeliveryTime: 26,
+                  slaString: "26 MINS",
+                  lastMileTravel: 1,
+                  slugs: {
+                    restaurant: "biryani-handi-ghar-sk-puri-srikrishnapuri",
+                    city: "patna",
+                  },
+                  cityState: "79",
+                  address: "east boring canal road,near bombay kulfi,patna",
+                  locality: "Srikrishnapuri",
+                  parentId: 46729,
+                  unserviceable: false,
+                  veg: false,
+                  select: false,
+                  favorite: false,
+                  tradeCampaignHeaders: [],
+                  aggregatedDiscountInfo: {
+                    header: "50% off",
+                    shortDescriptionList: [
+                      {
+                        meta: "50% off | Use WELCOME50",
+                        discountType: "Percentage",
+                        operationType: "RESTAURANT",
+                      },
+                    ],
+                    descriptionList: [
+                      {
+                        meta: "50% off up to ₹80 | Use code WELCOME50",
+                        discountType: "Percentage",
+                        operationType: "RESTAURANT",
+                      },
+                    ],
+                    subHeader: "",
+                    headerType: 0,
+                    superFreedel: "",
+                  },
+                  aggregatedDiscountInfoV2: {
+                    header: "50% OFF",
+                    shortDescriptionList: [
+                      {
+                        meta: "Use WELCOME50",
+                        discountType: "Percentage",
+                        operationType: "RESTAURANT",
+                      },
+                    ],
+                    descriptionList: [
+                      {
+                        meta: "50% off up to ₹80 | Use code WELCOME50",
+                        discountType: "Percentage",
+                        operationType: "RESTAURANT",
+                      },
+                    ],
+                    subHeader: "",
+                    headerType: 0,
+                    superFreedel: "",
+                  },
+                  chain: [],
+                  feeDetails: {
+                    fees: [],
+                    totalFees: 0,
+                    message: "",
+                    title: "",
+                    amount: "",
+                    icon: "",
+                  },
+                  availability: {
+                    opened: true,
+                    nextOpenMessage: "",
+                    nextCloseMessage: "",
+                  },
+                  longDistanceEnabled: 0,
+                  rainMode: "NONE",
+                  thirdPartyAddress: false,
+                  thirdPartyVendor: "",
+                  adTrackingID: "",
+                  badges: {
+                    imageBased: [],
+                    textBased: [],
+                    textExtendedBadges: [],
+                  },
+                  lastMileTravelString: "1 kms",
+                  hasSurge: false,
+                  sla: {
+                    restaurantId: "180592",
+                    deliveryTime: 26,
+                    minDeliveryTime: 26,
+                    maxDeliveryTime: 26,
+                    lastMileTravel: 1,
+                    lastMileDistance: 0,
+                    serviceability: "SERVICEABLE",
+                    rainMode: "NONE",
+                    longDistance: "NOT_LONG_DISTANCE",
+                    preferentialService: false,
+                    iconType: "EMPTY",
+                  },
+                  promoted: false,
+                  avgRating: "2.7",
+                  totalRatings: 1000,
+                  new: false,
+                },
+                subtype: "basic",
+              },
+              {
+                type: "restaurant",
+                data: {
+                  type: "F",
+                  id: "449025",
+                  name: "Pizza Hut",
+                  uuid: "3455d6c3-8405-419c-aec0-c73b7bc91863",
+                  city: "79",
+                  area: "Srikrishnapuri",
+                  totalRatingsString: "1000+ ratings",
+                  cloudinaryImageId: "qgraixtpeysv4rnomvl0",
+                  cuisines: ["Pizzas"],
+                  tags: [],
+                  costForTwo: 35000,
+                  costForTwoString: "₹350 FOR TWO",
+                  deliveryTime: 27,
+                  minDeliveryTime: 27,
+                  maxDeliveryTime: 27,
+                  slaString: "27 MINS",
+                  lastMileTravel: 3,
+                  slugs: {
+                    restaurant: "pizza-hut-patna-sadar-srikrishnapuri",
+                    city: "patna",
+                  },
+                  cityState: "79",
+                  address:
+                    "Pizza Hut, Plot No.8-B, Holding No.1453-A, Ground Floor, Circle No-249, Patna, Patna Sadar, Patna, Bihar, 800001",
+                  locality: "Patna Sadar",
+                  parentId: 721,
+                  unserviceable: false,
+                  veg: false,
+                  select: false,
+                  favorite: false,
+                  tradeCampaignHeaders: [],
+                  aggregatedDiscountInfo: {
+                    header: "50% off",
+                    shortDescriptionList: [
+                      {
+                        meta: "50% off | Use TRYNEW",
+                        discountType: "Percentage",
+                        operationType: "RESTAURANT",
+                      },
+                    ],
+                    descriptionList: [
+                      {
+                        meta: "50% off up to ₹100 | Use code TRYNEW",
+                        discountType: "Percentage",
+                        operationType: "RESTAURANT",
+                      },
+                    ],
+                    subHeader: "",
+                    headerType: 0,
+                    superFreedel: "",
+                  },
+                  aggregatedDiscountInfoV2: {
+                    header: "50% OFF",
+                    shortDescriptionList: [
+                      {
+                        meta: "Use TRYNEW",
+                        discountType: "Percentage",
+                        operationType: "RESTAURANT",
+                      },
+                    ],
+                    descriptionList: [
+                      {
+                        meta: "50% off up to ₹100 | Use code TRYNEW",
+                        discountType: "Percentage",
+                        operationType: "RESTAURANT",
+                      },
+                    ],
+                    subHeader: "",
+                    headerType: 0,
+                    superFreedel: "",
+                  },
+                  chain: [],
+                  feeDetails: {
+                    fees: [],
+                    totalFees: 0,
+                    message: "",
+                    title: "",
+                    amount: "",
+                    icon: "",
+                  },
+                  availability: {
+                    opened: true,
+                    nextOpenMessage: "",
+                    nextCloseMessage: "",
+                  },
+                  longDistanceEnabled: 0,
+                  rainMode: "NONE",
+                  thirdPartyAddress: false,
+                  thirdPartyVendor: "",
+                  adTrackingID: "",
+                  badges: {
+                    imageBased: [],
+                    textBased: [],
+                    textExtendedBadges: [],
+                  },
+                  lastMileTravelString: "3 kms",
+                  hasSurge: false,
+                  sla: {
+                    restaurantId: "449025",
+                    deliveryTime: 27,
+                    minDeliveryTime: 27,
+                    maxDeliveryTime: 27,
+                    lastMileTravel: 3,
+                    lastMileDistance: 0,
+                    serviceability: "SERVICEABLE",
+                    rainMode: "NONE",
+                    longDistance: "NOT_LONG_DISTANCE",
+                    preferentialService: false,
+                    iconType: "EMPTY",
+                  },
+                  promoted: false,
+                  avgRating: "3.7",
+                  totalRatings: 1000,
+                  new: false,
+                },
+                subtype: "basic",
+              },
+              {
+                type: "restaurant",
+                data: {
+                  type: "F",
+                  id: "87559",
+                  name: "Momo Magic Cafe",
+                  uuid: "d842d412-af65-49e8-95ee-40c3a05aebee",
+                  city: "79",
+                  area: "Buddha Colony",
+                  totalRatingsString: "1000+ ratings",
+                  cloudinaryImageId: "fwv4jgxbue1rrdmij4rz",
+                  cuisines: ["Chinese", "Tibetan"],
+                  tags: [],
+                  costForTwo: 25000,
+                  costForTwoString: "₹250 FOR TWO",
+                  deliveryTime: 21,
+                  minDeliveryTime: 21,
+                  maxDeliveryTime: 21,
+                  slaString: "21 MINS",
+                  lastMileTravel: 1.2000000476837158,
+                  slugs: {
+                    restaurant: "momo-magic-cafe-boring-road-srikrishnapuri",
+                    city: "patna",
+                  },
+                  cityState: "79",
+                  address:
+                    "Shop 1 & 2, Raj Krishna Apartment, Boring Canal Road, Opposite Fashion Big Bazar, Rajapul, Kidwaipuri, Patna",
+                  locality: "Boring Road",
+                  parentId: 138188,
+                  unserviceable: false,
+                  veg: false,
+                  select: false,
+                  favorite: false,
+                  tradeCampaignHeaders: [],
+                  aggregatedDiscountInfo: {
+                    header: "50% off",
+                    shortDescriptionList: [
+                      {
+                        meta: "50% off | Use WELCOME50",
+                        discountType: "Percentage",
+                        operationType: "RESTAURANT",
+                      },
+                    ],
+                    descriptionList: [
+                      {
+                        meta: "50% off up to ₹80 | Use code WELCOME50",
+                        discountType: "Percentage",
+                        operationType: "RESTAURANT",
+                      },
+                    ],
+                    subHeader: "",
+                    headerType: 0,
+                    superFreedel: "",
+                  },
+                  aggregatedDiscountInfoV2: {
+                    header: "50% OFF",
+                    shortDescriptionList: [
+                      {
+                        meta: "Use WELCOME50",
+                        discountType: "Percentage",
+                        operationType: "RESTAURANT",
+                      },
+                    ],
+                    descriptionList: [
+                      {
+                        meta: "50% off up to ₹80 | Use code WELCOME50",
+                        discountType: "Percentage",
+                        operationType: "RESTAURANT",
+                      },
+                    ],
+                    subHeader: "",
+                    headerType: 0,
+                    superFreedel: "",
+                  },
+                  chain: [],
+                  feeDetails: {
+                    fees: [],
+                    totalFees: 0,
+                    message: "",
+                    title: "",
+                    amount: "",
+                    icon: "",
+                  },
+                  availability: {
+                    opened: true,
+                    nextOpenMessage: "",
+                    nextCloseMessage: "",
+                  },
+                  longDistanceEnabled: 0,
+                  rainMode: "NONE",
+                  thirdPartyAddress: false,
+                  thirdPartyVendor: "",
+                  adTrackingID: "",
+                  badges: {
+                    imageBased: [],
+                    textBased: [],
+                    textExtendedBadges: [],
+                  },
+                  lastMileTravelString: "1.2 kms",
+                  hasSurge: false,
+                  sla: {
+                    restaurantId: "87559",
+                    deliveryTime: 21,
+                    minDeliveryTime: 21,
+                    maxDeliveryTime: 21,
+                    lastMileTravel: 1.2000000476837158,
+                    lastMileDistance: 0,
+                    serviceability: "SERVICEABLE",
+                    rainMode: "NONE",
+                    longDistance: "NOT_LONG_DISTANCE",
+                    preferentialService: false,
+                    iconType: "EMPTY",
+                  },
+                  promoted: false,
+                  avgRating: "3.5",
+                  totalRatings: 1000,
+                  new: false,
+                },
+                subtype: "basic",
+              },
+              {
+                type: "restaurant",
+                data: {
+                  type: "F",
+                  id: "650043",
+                  name: "Biryani by Choice",
+                  uuid: "cebf0e2b-1dc3-4db0-9144-3095807f37cb",
+                  city: "79",
+                  area: "Srikrishnapuri",
+                  totalRatingsString: "Too Few Ratings",
+                  cloudinaryImageId: "8fb963500627fc3270bdf801ec4a9213",
+                  cuisines: ["Indian", "Chinese", "Salads"],
+                  tags: [],
+                  costForTwo: 35000,
+                  costForTwoString: "₹350 FOR TWO",
+                  deliveryTime: 25,
+                  minDeliveryTime: 25,
+                  maxDeliveryTime: 25,
+                  slaString: "25 MINS",
+                  lastMileTravel: 1.899999976158142,
+                  slugs: {
+                    restaurant:
+                      "biryani-by-choice-srikrishnapuri-srikrishnapuri",
+                    city: "patna",
+                  },
+                  cityState: "79",
+                  address:
+                    "Sesodia Complex, Boring Canal Road, Boring Road, Patna, Patna, Bihar-800001",
+                  locality: "Sesodia Complex",
+                  parentId: 46586,
+                  unserviceable: false,
+                  veg: false,
+                  select: false,
+                  favorite: false,
+                  tradeCampaignHeaders: [],
+                  aggregatedDiscountInfo: {
+                    header: "50% off",
+                    shortDescriptionList: [
+                      {
+                        meta: "50% off | Use WELCOME50",
+                        discountType: "Percentage",
+                        operationType: "RESTAURANT",
+                      },
+                    ],
+                    descriptionList: [
+                      {
+                        meta: "50% off up to ₹80 | Use code WELCOME50",
+                        discountType: "Percentage",
+                        operationType: "RESTAURANT",
+                      },
+                    ],
+                    subHeader: "",
+                    headerType: 0,
+                    superFreedel: "",
+                  },
+                  aggregatedDiscountInfoV2: {
+                    header: "50% OFF",
+                    shortDescriptionList: [
+                      {
+                        meta: "Use WELCOME50",
+                        discountType: "Percentage",
+                        operationType: "RESTAURANT",
+                      },
+                    ],
+                    descriptionList: [
+                      {
+                        meta: "50% off up to ₹80 | Use code WELCOME50",
+                        discountType: "Percentage",
+                        operationType: "RESTAURANT",
+                      },
+                    ],
+                    subHeader: "",
+                    headerType: 0,
+                    superFreedel: "",
+                  },
+                  ribbon: [
+                    {
+                      type: "NEW",
+                    },
+                  ],
+                  chain: [],
+                  feeDetails: {
+                    fees: [],
+                    totalFees: 0,
+                    message: "",
+                    title: "",
+                    amount: "",
+                    icon: "",
+                  },
+                  availability: {
+                    opened: true,
+                    nextOpenMessage: "",
+                    nextCloseMessage: "",
+                  },
+                  longDistanceEnabled: 0,
+                  rainMode: "NONE",
+                  thirdPartyAddress: false,
+                  thirdPartyVendor: "",
+                  adTrackingID: "",
+                  badges: {
+                    imageBased: [],
+                    textBased: [],
+                    textExtendedBadges: [],
+                  },
+                  lastMileTravelString: "1.8 kms",
+                  hasSurge: false,
+                  sla: {
+                    restaurantId: "650043",
+                    deliveryTime: 25,
+                    minDeliveryTime: 25,
+                    maxDeliveryTime: 25,
+                    lastMileTravel: 1.899999976158142,
+                    lastMileDistance: 0,
+                    serviceability: "SERVICEABLE",
+                    rainMode: "NONE",
+                    longDistance: "NOT_LONG_DISTANCE",
+                    preferentialService: false,
+                    iconType: "EMPTY",
+                  },
+                  promoted: false,
+                  avgRating: "--",
+                  totalRatings: 0,
+                  new: true,
+                },
+                subtype: "basic",
+              },
+];
+
+const burgerKing = {
+  name: "Burger King",
+  image:
+    "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/5f1c0c7b36787d89b63e9743838d4f5c",
+  cuisines: ["Burger", "American"],
+  rating: "4.2",
+};
+
+const RestrauntCard = ({cloudinaryImageId,name,cuisines,lastMileTravel}) => {
+  // console.log(props)
+  return (
+    <div className="card">
+      <img
+        src={
+          "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/" +
+         cloudinaryImageId
+        }
+        alt="burger king"
+      />
+      <h2>{name}</h2>
+      <h3>{cuisines.join(",")}</h3>
+      <h4>{lastMileTravel} kms</h4>
+    </div>
+  );
+};
+
+const Body = () => {
+  return (
+    <div className="restaurant-list">
+      {
+        restaurantlist.map((restaurant) => {
+          return <RestrauntCard  {...restaurant.data} />
+        })
+      }
+      {/* <RestrauntCard {...restaurantlist[0].data} />
+      <RestrauntCard {...restaurantlist[1].data} />
+      <RestrauntCard {...restaurantlist[2].data} />
+      <RestrauntCard {...restaurantlist[3].data} />
+      <RestrauntCard {...restaurantlist[4].data} />
+      <RestrauntCard {...restaurantlist[5].data} />
+      <RestrauntCard {...restaurantlist[6].data} />
+      <RestrauntCard {...restaurantlist[7].data} />
+      <RestrauntCard {...restaurantlist[8].data} />
+      <RestrauntCard {...restaurantlist[9].data} />
+      <RestrauntCard {...restaurantlist[10].data} />
+      <RestrauntCard {...restaurantlist[11].data} />
+      <RestrauntCard {...restaurantlist[12].data} /> */}
+    </div>
+  );
+};
+
+const Footer = () => {
+  return <h4>Footer</h4>;
+};
+
+const AppLayout = () => {
+  return (
+    <>
+      <Header />
+      <Body />
+      <Footer />
+    </>
+  );
+};
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 
 //WHEN I HAVE TO RENDER MY REACT ELLEMENT
 // root.render(heading2);
 
-
-
 //WHEN I HAVE TO RENDER MY REACT COMPONENT
-root.render(<HeaderComponent/>)
+root.render(<AppLayout />);
